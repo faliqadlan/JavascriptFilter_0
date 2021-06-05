@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Potential by Filter Method</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<script src="./js/plotly-latest.min.js"></script>
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100" >
+			<!-- <div class="validate-form"> -->
+				<div class="contact100-form">
+					<span class="contact100-form-title">
+						integrated parameter
+					</span>
+
+					<label class="label-input100" for="nloop">nloop</label>
+					<div class="wrap-input100 validate-input" data-validate="nloop must a positive integer number">
+						<input id="nloop" class="input100" type="number" name="nloop" placeholder="3" value="3">
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="xmin">Potensial range</label>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="xmin must a number and below xmax">
+						<input id="xmin" class="input100" type="number" name="xmin" placeholder="xmin" value="-10">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="xmax must a number and above xmin">
+						<input id="xmax" class="input100" type="number" name="xmax" placeholder="xmax" value="10">
+						<span class="focus-input100"></span>
+					</div>
+
+					<!-- <label class="label-input100" for="potRange">Potensial Range</label>
+					<div class="wrap-input100 validate-input" data-validate = "dx must a positive number and not a zero">
+						<input id="potRange" class="input100" type="number" name="potRange" placeholder="20" value="20">
+						<span class="focus-input100"></span>
+					</div> -->
+
+					<label class="label-input100" for="dx">dx</label>
+					<div class="wrap-input100 validate-input" data-validate = "dx must a positive number and not a zero">
+						<input id="dx" class="input100" type="number" name="dx" placeholder="0.01" value="0.01">
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="initE">searched energy</label>
+					<div class="wrap-input100 validate-input" data-validate="initial energy must a positive number">
+						<input id="initE" class="input100" type="number" name="initE" placeholder="0" value="3">
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="initE">minimum energy</label>
+					<div class="wrap-input100 validate-input" data-validate="minimum energy must a positive number">
+						<input id="minE" class="input100" type="number" name="minE" placeholder="0" value="0">
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="v0">minimum potential (v0)</label>
+					<div class="wrap-input100 validate-input" data-validate="minimum potential must a positive number">
+						<input id="v0" class="input100" type="number" name="v0" placeholder="0" value="0">
+						<span class="focus-input100"></span>
+					</div>
+				</div>
+
+				<div  style="width: 13%; margin-right: 20px; padding-top: 56px; padding-bottom: 63px">
+				<!-- <div class="contact100-form"></div> -->
+					<span class="contact100-form-title" style="padding-bottom: 33px; width: 69px;">
+						potential parameter
+					</span>
+
+					<div class="container-contact100-form-btn" id="startPlaceholder">
+						<button type="submit" name="start" id="start" onclick= start() class="contact100-form-btn">
+							Start
+						</button>
+					</div>
+
+					<div id="choosen"></div>    
+    				<div id="formHolder"></div>
+					<br>
+					<div id="choosen2"></div>
+    				<div id="formHolder2"></div>
+
+					<div id="runPlaceholder"></div>
+					<!-- <div class="container-contact100-form-btn">
+						<button type="submit" name="run" id="run" onclick= run() class="contact100-form-btn">
+							Run Program
+						</button>
+					</div> -->
+				</div>
+			<!-- </div> -->
+
+			<div class="contact100-more flex-col-c-m" style="background-image: url('images/bg-01.jpg');">
+
+				<div id="startIlPlaceholder">
+					<img src="./images/start_Illustration.png" alt="" srcset="" style="height: 1000px; width: 1250px">
+				</div>
+
+				<div id="runIlPlaceholder"></div>
+
+				<div id="imPlotPlaceholder"></div>
+				
+				
+				<!-- <img src="./filter/singlePotential/image/harmonik.png" alt="" srcset=""> -->
+				
+				<!-- <h1 class="text-light">Eigenn energy: <br> <span id="Enew"></span> </h1>
+				<h1 class="text-light">Level energy: <br> <span id="Elev"></span> </h1> -->
+				<div id="chartPlaceholder1" ></div>
+				<div id="enewPlaceholder"></div>
+				<div id="chartPlaceholder2" ></div>
+				<div id="probPlaceholder" ></div>
+				<div id="elevPlaceholder"></div>
+				<div id="chartPlaceholder3" ></div>
+				<div id="tablePlaceholder" ></div>
+
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+	<script src="js/app.js"></script>
+</body>
+</html>
