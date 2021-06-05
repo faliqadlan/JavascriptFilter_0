@@ -213,27 +213,23 @@ function getEnergy(initE, vpot, argPot) {
 }
 
 
-// function singleEigen(argPot, vpot, iter, initE, vtemp) {
+function singleEigen(argPot, vpot, iter, initE, vtemp) {
 
-//     let xmin = argPot[0],
-//         xmax = argPot[1],
-//         dx = argPot[2],
-//         v0 = argPot[3],
-//         ngrid = argPot[4],
-//         nloop = argPot[5];
-
-//     energy_new = eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp)[0]
-//     efunction = eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp)[1]
-//     //console.log(efunction)
-// }
-
-function singleEigen(argPot, vpot, iternotuse, initE, vtemp) {
     let xmin = argPot[0],
         xmax = argPot[1],
         dx = argPot[2],
         v0 = argPot[3],
         ngrid = argPot[4],
         nloop = argPot[5];
+
+    output = eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp)
+    
+    energy_new = output[0]
+    efunction = output[1]
+    //console.log(efunction)
+}
+
+function eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp) {
 
     if (initE == 0) {
         initE = initE + 1e-12;
@@ -312,9 +308,10 @@ function singleEigen(argPot, vpot, iternotuse, initE, vtemp) {
     for (let i = 0; i < ngrid; i++) {
         efunction[i] = efunction[i] / ampl_max;
     }
-
-    // output = [energy_new, efunction];
-    // return output;
+    
+    output = [energy_new, efunction];
+    //console.log(output)
+    return output;
 }
 
 
