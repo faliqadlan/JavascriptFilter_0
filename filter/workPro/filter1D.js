@@ -97,7 +97,7 @@ function spekEnergyPeri(minE, initE, vpot, argPot, widthPot) {
                 bandMin.push((sortSpek[i + 1]).toFixed(8))
             }
         }
-        bandMax.push(sortSpek[sortSpek.length - 1].toFixed(8))
+        bandMax.push("...") //sortSpek[sortSpek.length - 1].toFixed(8))
         //console.log(bandMin,bandMax)
         for (let i = 0; i < bandMin.length - 1; i++) {
             // console.log(bandMin[i+1]-bandMax[i])
@@ -106,7 +106,7 @@ function spekEnergyPeri(minE, initE, vpot, argPot, widthPot) {
             energyBand.push((bandMax[i] - bandMin[i]).toFixed(8))
         }
         gapBand.push("...")
-        energyBand.push((bandMax[bandMin.length - 1] - bandMin[bandMin.length - 1]).toFixed(8))
+        energyBand.push("...") //(bandMax[bandMin.length - 1] - bandMin[bandMin.length - 1]).toFixed(8))
 
         //console.log(peakCount)
 
@@ -223,7 +223,7 @@ function singleEigen(argPot, vpot, iter, initE, vtemp) {
         nloop = argPot[5];
 
     output = eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp)
-    
+
     energy_new = output[0]
     efunction = output[1]
     //console.log(efunction)
@@ -246,14 +246,12 @@ function eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp) {
             efunction[i] = 1 + x[i] / x_end;
         }
     }
-    //console.log(efunction)
     let loop = 0,
         iter = 0,
         error = 1e-5,
         output = [],
         estart = initE,
         vharm = vpot[ngrid - 1];
-    //console.log(loop,nloop)
     do {
         if (iter == 0) {
             loop = nloop;
@@ -268,49 +266,35 @@ function eigenState(x, ngrid, efunction, vpot, initE, nloop, dx, vtemp) {
         energy_new = getHamilton3p(dx, vpot, efunction, ngrid, vtemp);
 
         delta = Math.abs((energy_new - energy) / energy);
-        //console.log(loop, iter,delta,delta>error,energy_new)
         energyN = energy_new;
         energy = energyN;
         iter += 1
-        //console.log(iter, energy, loop, delta > error)
     } while (delta > error);
-    //console.log(loop, iter, delta, delta > error, energy_new)
     let rsign = 1;
-    //if (x < 1e-8) rsign = (spaceship(efunction[1], 0));
-    //console.log(estart)
-
     ampl_max = 1;
     if (vharm <= 1) {
         if (estart > 0 && initE > 0) {
             ampl_max = 0;
             inode = 0;
             wb = efunction[ngrid - 1];
-            //console.log(wb)
             i = ngrid;
             while (inode < 10) {
                 i = i - 1;
                 wf = efunction[i];
-                //console.log(inode)
                 if (i < 10) break;
                 if (wf * wb < 0) inode = inode + 1;
                 abswf = Math.abs(wf);
-                //console.log(inode = inode + 1)
                 if (abswf > ampl_max) ampl_max = abswf;
                 wb = wf;
-                //console.log(ampl_max)
             }
-            //console.log(inode)
         }
     }
-    //console.log(ampl_max)
-    //console.log(efunction)
     ampl_max = ampl_max * rsign;
     for (let i = 0; i < ngrid; i++) {
         efunction[i] = efunction[i] / ampl_max;
     }
-    
+
     output = [energy_new, efunction];
-    //console.log(output)
     return output;
 }
 
