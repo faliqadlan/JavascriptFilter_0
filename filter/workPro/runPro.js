@@ -327,14 +327,22 @@ function run() {
         x: x,
         y: vpot,
         type: 'scatter',
-        name: 'potential'
+        name: 'potential',
+        mode: 'lines',
+        line : {
+            width:5
+        }
     };
 
     var efunction_plot = {
         x: x,
         y: efunction,
         type: 'scatter',
-        name: 'psi'
+        name: 'psi',
+        mode: 'lines',
+        line: {
+            width: 5
+            }
     };
 
     var spekE_plot = {
@@ -602,7 +610,11 @@ function run() {
             x: x,
             y: probSi,
             type: 'scatter',
-            name: 'probability'
+            name: 'probability',
+            mode: 'lines',
+                line: {
+                    width: 5
+                }
         };
 
         for (let i = 1; i < spekE.length + 1; i++) {
@@ -697,13 +709,21 @@ function run() {
                 x: x,
                 y: vpot,
                 type: 'scatter',
-                name: 'potential'
+                name: 'potential',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             }
             var ef_miniPlot = {
                 x: x,
                 y: efunction,
                 type: 'scatter',
-                name: 'psi'
+                name: 'psi',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             }
 
             for (let i = 0; i < efunction.length; i++) {
@@ -713,28 +733,44 @@ function run() {
                 x: x,
                 y: probPer,
                 type: 'scatter',
-                name: 'probability'
+                name: 'probability',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             };
         } else {
             var vpot_miniPlot = {
                 x: x_mini,
                 y: vpot_mini,
                 type: 'scatter',
-                name: 'potential'
+                name: 'potential',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             };
 
             var ef_miniPlot = {
                 x: x_mini,
                 y: ef_mini,
                 type: 'scatter',
-                name: 'psi'
+                name: 'psi',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             };
 
             var prob_miniplot = {
                 x: x_mini,
                 y: probPer,
                 type: 'scatter',
-                name: 'probability'
+                name: 'probability',
+                mode: 'lines',
+                    line: {
+                        width: 5
+                    }
             };
         }
 

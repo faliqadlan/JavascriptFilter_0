@@ -19,13 +19,13 @@ function formPot2() {
 			<span class="focus-input100"></span>
 		</div>
 
-        <label class="label-input100" for="lks">Lattice Width</label>
+        <label class="label-input100" for="lks">Potential Width</label>
 		<div class="wrap-input100">
 			<input id="lks" class="input100" type="number" name="lks" placeholder="1" value="2">
 			<span class="focus-input100"></span>
 		</div>
 
-        <label class="label-input100" for="lpt">Potential Width</label>
+        <label class="label-input100" for="lpt">Lattice Width</label>
 		<div class="wrap-input100">
 			<input id="lpt" class="input100" type="number" name="lpt" placeholder="1" value="10">
 			<span class="focus-input100"></span>
