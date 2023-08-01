@@ -4,4 +4,4 @@
 
 ## Journal Link
 
-[Method for Simultaneous Computation](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fjournals.aps.org%2Fpre%2Fabstract%2F10.1103%2FPhysRevE.96.033302%23%3A%7E%3Atext%3DThe%2520paper%2520presents%2520a%2520method%2520for%2520simultaneous%2520computation%2Cpacket%2520at%2520the%2520rate%2520comparable%2520to%2520%25CE%25B4%2520function.&link_redirector=1)
+[Filter method without boundary-value condition for simultaneous calculation of eigenfunction and eigenvalue of a stationary Schrödinger equation on a grid](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.96.033302#:~:text=The%20paper%20presents%20a%20method%20for%20simultaneous%20computation,packet%20at%20the%20rate%20comparable%20to%20%CE%B4%20function.)
